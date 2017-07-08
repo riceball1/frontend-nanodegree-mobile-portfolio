@@ -27,6 +27,15 @@ gulp.task('viewsminify', function() {
     .pipe(gulp.dest(folder.build + 'views'));
 });
 
+// minify css
+// minify and rename css with suffix min
+gulp.task('viewscss', function() {
+  return gulp.src(folder.src + 'views/css/*.css') // src files
+    .pipe(cssmin())
+    .pipe(rename({suffix: '.min'})) // gulp plugin
+    .pipe(gulp.dest(folder.build + 'views/css/')) // output
+});
+
 // js files minified
 gulp.task('viewsjs', function() {
   var jsbuild = gulp.src(folder.src + 'views/js/*')
@@ -42,7 +51,7 @@ gulp.task('viewsjs', function() {
 
 // minify view images
 gulp.task('viewsimageminify', function() {
-  gulp.src('views/images/*')
+  gulp.src(folder.src + 'views/images/*')
         .pipe(imagemin())
         .pipe(gulp.dest(folder.build + 'views/images/'))
 });
@@ -79,22 +88,22 @@ gulp.task('css', function() {
 // minify images
 
 gulp.task('imageminify', function() {
-  gulp.src('/images/*')
+  gulp.src('./img/*')
         .pipe(imagemin())
-        .pipe(gulp.dest( folder.build + '/images'))
+        .pipe(gulp.dest( folder.build + '/img'))
 });
 
 
 /** RUN AND WATCH TASKS ***/
 
 // run all tasks
-gulp.task('run', ['css', 'js', 'minify', 'viewsminify', 'viewsjs', 'viewsimageminify', 'imageminify']);
+gulp.task('run', ['css', 'js', 'minify', 'viewsminify', 'viewsjs', 'viewsimageminify', 'imageminify', 'viewscss']);
 
 // watch for changes
 gulp.task('watch', function() {
 
   // views changes:
-  gulp.watch(folder.src + 'views/**/*', ['viewsminify', 'viewsjs', 'viewsimageminify']);
+  gulp.watch(folder.src + 'views/**/*', ['viewsminify', 'viewsjs', 'viewsimageminify', 'viewscss']);
 
 
   // regular changes:
