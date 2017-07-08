@@ -25,6 +25,11 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cssmin": "^0.2.0",
-    "gulp-rename": "^1.2.2"
+    "gulp-deporder": "^1.1.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^3.0.0"
   }
 }
