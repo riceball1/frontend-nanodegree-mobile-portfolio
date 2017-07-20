@@ -62,7 +62,7 @@ gulp.task('viewsimageminify', function() {
 
         // Other HTML files minified:
         gulp.task('minify', function() {
-            return gulp.src(folder.src + '/*.html')
+            return gulp.src(folder.src + '*.html')
                 .pipe(htmlmin({ collapseWhitespace: true }))
                 .pipe(gulp.dest('./'));
         });
