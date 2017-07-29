@@ -406,13 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -424,7 +424,7 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    var windowWidth = document.getElementById("randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
     // Changes the slider value to a percent width
@@ -474,7 +474,7 @@ window.performance.mark("mark_start_generating"); // collect timing data
 // This for-loop actually creates and appends all of the pizzas when the page loads
 // CHANGE: reduce # of pizzas from 100 to 25
 var pizzasDiv = document.getElementById("randomPizzas");
-var pizzaTotal = 25;
+var pizzaTotal = 50;
 for (var i = 2; i < pizzaTotal; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -506,36 +506,11 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-
-  // replace querySelectorAll with just getElementsByClassName - reduces speed
-  // var items = document.getElementsByClassName('.mover');
-  // var itemsLength = items.length;
-  // var phases = [];
-  // // there is only ever 5 unique numebrs for generating phase
-  // var phase;
-  // for(var i = 0; i < 5; i++) {
-  //   phase = Math.sin((document.body.scrollTop / 
-  // 1250) + (i));
-  //   phases.push(phase);
-  // }
-
-  // THOUGHT: Do I need to move the sliding pizzas in a loop??
-  // for (var i = 0; i < itemsLength; i++) {
-  //   // the (i % 5) gives 5 sets of numbers, so just use those 5 numbers to get it
-  //   // instead of calculating the modulo each time
-  //   // var basicLeft = items[i].basicLeft + 100 * phase[i % 5];
-  //   // what is happening here
-  //   // console.log('phase and bodyScroll3', phase, document.body.scrollTop / 1250);
-  //   // items[i].style.left = basicLeft + 'px';
-  //   var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-  //   items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-
-  
-  // }
-
-  var items = document.querySelectorAll('.mover');
+  // use getElementsByClassName for faster access to DOM
+  var items = document.getElementsByClassName('mover');
   var itemsLength = items.length;
-  for (var i = 0; i < itemsLength; i++) {
+  
+  for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
@@ -558,19 +533,18 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   // moved variables outside of for-loop
-  
-    // reduced from 200 to 25
-    // pizzaAmount:
-    var pizzaAmount = 25;
+  // reduced from 200 to 50
+  // pizzaAmount:
+  var pizzaAmount = 50;
   for (var i = 0; i < pizzaAmount; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    // elem.style.height = "100px";
+    // elem.style.width = "73.333px";
+    // elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
-  updatePositions();
+    updatePositions();
 });
