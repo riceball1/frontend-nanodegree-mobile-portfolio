@@ -547,9 +547,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var cols = 8;
     var s = 256;
     // moved variables outside of for-loop
+    var movingPizza = document.getElementById("movingPizzas1");
+
     // reduced from 200 to 50
     // pizzaAmount:
-    var pizzaAmount = 100;
+    var pizzaAmount = 50;
     for (var i = 0; i < pizzaAmount; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
@@ -558,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elem.style.width = "73.333px";
         elem.basicLeft = (i % cols) * s;
         elem.style.top = (Math.floor(i / cols) * s) + 'px';
-        document.getElementById("movingPizzas1").appendChild(elem);
+        movingPizza.appendChild(elem);
     }
     updatePositions();
 });
