@@ -425,18 +425,21 @@ var resizePizzas = function(size) {
 
     // Changes the value for the size of the pizza above the slider
     function changeSliderLabel(size) {
+        // pull variable outside of case
+        var pizzaSize = document.getElementById("pizzaSize");
         switch (size) {
             case "1":
-                document.getElementById("pizzaSize").innerHTML = "Small";
-                return;
+                pizzaSize.innerHTML = "Small";
+                break;
             case "2":
-                document.getElementById("pizzaSize").innerHTML = "Medium";
-                return;
+                pizzaSize.innerHTML = "Medium";
+                break;
             case "3":
-                document.getElementById("pizzaSize").innerHTML = "Large";
-                return;
+                pizzaSize.innerHTML = "Large";
+                break;
             default:
                 console.log("bug in changeSliderLabel");
+                break;
         }
     }
 
@@ -516,6 +519,8 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
+
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
     frame++;
@@ -524,11 +529,19 @@ function updatePositions() {
     var items = document.getElementsByClassName('mover');
     var itemsLength = items.length;
 
-    for (var i = 0; i < items.length; i++) {
-        var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-        items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    // calculate phases
+    var phases = [];
+    var top = (document.body.scrollTop / 1250);
+    for (var p = 0; p < 5; p++) {
+      phases.push(Math.sin(top + p));
     }
 
+    // console.log(phases)
+
+    for (var i = 0; i < items.length; i++) {
+      items[i].style.left = items[i].basicLeft + 100 * phases[i % 5] + 'px';
+    }
+  
     // User Timing API to the rescue again. Seriously, it's worth learning.
     // Super easy to create custom metrics.
     window.performance.mark("mark_end_frame");
