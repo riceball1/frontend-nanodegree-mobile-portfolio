@@ -2,6 +2,10 @@
 
 ## How to Start Project
 
+### Gh-pages:
+1. Access via this link: http://www.danafng.com/frontend-nanodegree-mobile-portfolio/
+
+### Locally:
 
 1.  Start local server:
 ```bash
