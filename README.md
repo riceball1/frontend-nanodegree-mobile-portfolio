@@ -1,5 +1,20 @@
 ## Website Performance Optimization portfolio project
 
+## How to Start Project
+
+
+1.  Start local server:
+```bash
+  $> cd /path/to/your-project-folder
+  $> python -m SimpleHTTPServer 8080
+  ```
+
+2. Get the project up and running for PageSpeed testing (ngrok is included in the repo):
+
+ ``` bash
+  $> cd /path/to/your-project-folder
+  $> ./ngrok http 8080
+  ```
 
 ## Optimizations for Index.html + Pizza.html
 
@@ -9,6 +24,7 @@ The following are a list of optimizations that I did in order to get a 90 or abo
 - Used Base64 Image Encoder for index.html images to optimize images
 - Added Cache-Control [Resource: https://varvy.com/pagespeed/cache-control.html]
 - Used optimizilla to turn reduce the size of pizza.jpg (now pizza-min.jpg) down
+
 
 ## Description of Project From Udacity
 
