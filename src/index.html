@@ -10,7 +10,7 @@
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
     <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
     <!-- <link href="dist/css/style.min.css" rel="stylesheet" media="all"> -->
-    <link href="dist/css/print.min.css" rel="stylesheet" media="print">
+    <!-- <link href="dist/css/print.min.css" rel="stylesheet" media="print"> -->
     <!-- optimize font speed -->
     <style>
     @font-face {
@@ -171,6 +171,45 @@
         }
     }
     </style>
+    <style media="print">
+    @media print {
+        * {
+            background: transparent !important;
+            color: black !important;
+            text-shadow: none !important;
+            filter: none !important;
+            -ms-filter: none !important;
+        }
+        a,
+        a:visited {
+            color: #444 !important;
+            text-decoration: underline;
+        }
+        a[href]:after {
+            content: " (" attr(href) ")";
+        }
+        tr,
+        img {
+            page-break-inside: avoid;
+        }
+        img {
+            max-width: 100% !important;
+        }
+        @page {
+            margin: 0.5cm;
+        }
+        p,
+        h2,
+        h3 {
+            orphans: 3;
+            widows: 3;
+        }
+        h2,
+        h3 {
+            page-break-after: avoid;
+        }
+    }
+    </style>
 </head>
 
 <body>
@@ -214,9 +253,8 @@
             <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
         </footer>
     </div>
-
     <!-- moved script to end for faster loading -->
-     <script async src="dist/js/perfmatters.js"></script>
+    <script async src="dist/js/perfmatters.js"></script>
     <script>
     (function(w, g) {
         w['GoogleAnalyticsObject'] = g;
@@ -231,7 +269,6 @@
     ga('send', 'pageview');
     </script>
     <script async src="http://www.google-analytics.com/analytics.js"></script>
-   
 </body>
 
 </html>
