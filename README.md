@@ -1,18 +1,14 @@
 ## Website Performance Optimization portfolio project
 
 
-## Optimizations
+## Optimizations for Index.html + Pizza.html
 
-The following are a list of optimizations that I did in order to get a 90 or above speed score for the website:
+The following are a list of optimizations that I did in order to get a 90 or above speed score for the website, and to improve the pizza.html to 60 FPS:
 
 - Create a gulpfile.js that minifies html, css, and images
 - Used Base64 Image Encoder for index.html images to optimize images
 - Added Cache-Control [Resource: https://varvy.com/pagespeed/cache-control.html]
-- Changed image for Pizza.html to optimzied one
-
-
-
-
+- Used optimizilla to turn reduce the size of pizza.jpg (now pizza-min.jpg) down
 
 ## Description of Project From Udacity
 
