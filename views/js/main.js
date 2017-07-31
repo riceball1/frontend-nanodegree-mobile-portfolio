@@ -563,8 +563,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // pizzaAmount based on screenheight
     var pizzaAmount = (screen.height / s) * 8;
 
+    // declared variable outside of loop 
+    var elem;
+
     for (var i = 0; i < pizzaAmount; i++) {
-        var elem = document.createElement('img');
+        elem = document.createElement('img'); // declared inital variable outside of loop
         elem.className = 'mover';
         elem.src = "images/pizza.min.png"; // changed to minified pizza image
         elem.style.height = "100px";

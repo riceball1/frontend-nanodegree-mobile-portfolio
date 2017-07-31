@@ -25,9 +25,11 @@
 The following are a list of optimizations that I did in order to get a 90 or above speed score for the website, and to improve the pizza.html to 60 FPS:
 
 - Create a gulpfile.js that minifies html, css, and images
-- Used Base64 Image Encoder for index.html images to optimize images
+- Used Base64 Image Encoder for index.html images to optimize images; optimized images are in index.html, and pizza.html, also replaced pizza.png with pizza.min.png in main.js
 - Added Cache-Control [Resource: https://varvy.com/pagespeed/cache-control.html]
-- Used optimizilla to turn reduce the size of pizza.jpg (now pizza-min.jpg) down
+- Used optimizilla to reduce the size of pizza.jpg (now pizza-min.jpg) down
+- inlined css for both index.html and pizza.html
+- reordered script tags in index.html
 
 
 ## Description of Project From Udacity
