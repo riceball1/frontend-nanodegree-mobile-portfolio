@@ -566,7 +566,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for (var i = 0; i < pizzaAmount; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
-        elem.src = "images/pizza.min.png";
+        elem.src = "images/pizza.min.png"; // changed to minified pizza image
         elem.style.height = "100px";
         elem.style.width = "73.333px";
         elem.basicLeft = (i % cols) * s;
