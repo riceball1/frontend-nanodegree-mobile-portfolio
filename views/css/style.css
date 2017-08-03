@@ -30,6 +30,11 @@ form {
 }
 
 .mover {
+  /* added transform and backface-visibility to increase speed */
+  -webkit-transform: translateZ(0);
+           transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   position: fixed;
   width: 256px;
   z-index: -1;

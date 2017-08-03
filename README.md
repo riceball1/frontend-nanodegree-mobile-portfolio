@@ -30,6 +30,7 @@ The following are a list of optimizations that I did in order to get a 90 or abo
 - Used optimizilla to reduce the size of pizza.jpg (now pizza-min.jpg) down
 - inlined css for both index.html and pizza.html
 - reordered script tags in index.html
+- in views/css/style.css added transform: translateZ(0) and backface-visibility: hidden to increase speed on .mover selector
 
 
 ## Description of Project From Udacity
